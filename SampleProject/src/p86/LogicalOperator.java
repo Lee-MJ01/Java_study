@@ -12,7 +12,7 @@ public class LogicalOperator {
 		System.out.println(!(3 != 2));
 		
 		System.out.println((3 > 2) && (3>4));
-		System.out.println((3 != 2) || (-1>0));
+		// System.out.println((3 != 2) || (-1 > 0));
 		System.out.println((3 != 2) ^ (-1>0));
 	}
 

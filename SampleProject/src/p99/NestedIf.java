@@ -23,7 +23,7 @@ public class NestedIf {
 		}
 		else
 			System.out.println("불합격!");
-
+		sc.close();
 	}
 
 }

@@ -22,7 +22,7 @@ public class Test06 {
 		String result = x > y ? "x가 더 큽니다." : "y가 더 큽니다.";
 		
 		System.out.println(result);
-
+		sc.close();
 	}
 
 }

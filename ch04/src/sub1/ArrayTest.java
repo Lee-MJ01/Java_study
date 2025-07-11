@@ -13,7 +13,7 @@ public class ArrayTest {
 		int[] arr1 = {1,2,3,4,5};
 		char[] arr2 = {'A', 'B', 'C'};
 		String[] arr3 = {"서울","대전","대구","부산","광주"};
-		boolean[] arr4 = {true, false,true, true, false};
+		// boolean[] arr4 = {true, false,true, true, false};
 		
 		// 배열 원소
 		System.out.println("arr1[0] : " + arr1[0]);

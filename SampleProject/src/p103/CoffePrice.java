@@ -25,6 +25,7 @@ public class CoffePrice {
 		}
 		if(price != 0)
 			System.out.println(order + "는 " + price + "입니다.");
+		sc.close();
 	}
 
 }

@@ -23,6 +23,7 @@ public class B11047 {
 			}
 		}
 		System.out.println(result);
+		sc.close();
 	}
 
 }

@@ -34,7 +34,7 @@ public class Test04 {
 		else
 			grade = 'F';
 		System.out.printf("등급은 %c입니다.",grade);
-
+		sc.close();
 	}
 	
 

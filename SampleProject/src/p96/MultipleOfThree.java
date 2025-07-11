@@ -11,7 +11,7 @@ public class MultipleOfThree {
 		int number = sc.nextInt();
 		if(number % 3 == 0)
 			System.out.println("3의 배수입니다.");
-
+		sc.close();
 	}
 
 }

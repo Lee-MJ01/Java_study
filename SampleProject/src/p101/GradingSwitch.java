@@ -28,6 +28,7 @@ public class GradingSwitch {
 			grade = 'F';
 		}
 		System.out.println("학점은 " + grade + "입니다.");
+		sc.close();
 	}
 
 }

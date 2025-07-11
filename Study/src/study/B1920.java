@@ -26,7 +26,7 @@ public class B1920 {
 		Arrays.sort(elements);
 		
 		r = sc.nextInt();
-		int [] result = new int[r+1];
+		// int [] result = new int[r+1];
 		StringBuilder sb = new StringBuilder();
 		
 		
@@ -52,6 +52,7 @@ public class B1920 {
 				sb.append("0").append("\n");
 		}
 		System.out.println(sb);
+		sc.close();
 	}
 
 }

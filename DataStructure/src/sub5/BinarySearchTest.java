@@ -46,7 +46,7 @@ public class BinarySearchTest {
 			System.out.printf("%d번째 있습니다.", loc + 1);
 		}else
 			System.out.printf("찾는 숫자 없음");
-
+		sc.close();
 	}
 
 }
