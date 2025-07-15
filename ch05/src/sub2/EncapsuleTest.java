@@ -71,7 +71,7 @@ public class EncapsuleTest {
         
         Book book2 = new Book("명품 Java", "황기태", "10002", 1);
         
-        boolean isOk1 = book2.borrowBook();
+        //boolean isOk1 = book2.borrowBook();
         boolean isOk2 = book2.borrowBook();
         
         if(isOk2) {

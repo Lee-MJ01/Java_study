@@ -8,7 +8,7 @@ public class Book{
 	private int availableCopies; // 이용 가능한 복사본 수
 	
 	// 생성자 정의
-	public Book(String titel, String author, String isbn, int availableCopies) {
+	public Book(String title, String author, String isbn, int availableCopies) {
 		this.title = title;
 		this.author = author;
 		this.isbn = isbn;
