@@ -18,12 +18,51 @@ public class PolyTest {
 		// 다형성 - 자식 객체의 타입선언을 부모타입으로 선언
 		Animal tiger = new Tiger(); // 업캐스팅
 		Animal shark = new Shark(); // 업캐스팅
-		Eagle eagle = new Eagle(); 	// 다운캐스팅
+		Animal eagle = new Eagle(); // 업캐스팅
 
 		tiger.move();
+		tiger.hunt();
+		
 		eagle.move();
+		eagle.hunt();
+		
 		shark.move();
+		shark.hunt();
+		
+		// 다운캐스팅 - 부모타입의 객체를 자식타입으로 캐스팅(Casting, 형변환)
+		Tiger t = (Tiger) tiger;
+		Eagle e = (Eagle) eagle;
+		Shark s = (Shark) shark;
+		
+		t.move();
+		t.hunt();
+		
+		e.move();
+		e.hunt();
+		
+		s.move();
+		s.hunt();
+		
+		// 다형성을 활용한 객체 배열
+		Animal arr[] = {t,e,s};
+		
+		arr[0].move();
+		arr[1].move();
+		arr[2].move();
 		
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
