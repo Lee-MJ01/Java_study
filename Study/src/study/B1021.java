@@ -35,7 +35,7 @@ public class B1021 {
 		}
 		Arrays.sort(e);
 		
-		
+		sc.close();
 		
 		
 		
