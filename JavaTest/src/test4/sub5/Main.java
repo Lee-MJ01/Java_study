@@ -1,8 +1,5 @@
 package test4.sub5;
 
-import test4.sub4.Book;
-import test4.sub4.Member;
-
 public class Main {
 
 	public static void main(String[] args) {

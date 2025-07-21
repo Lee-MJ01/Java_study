@@ -13,7 +13,7 @@ class Student {
 	private int grade;
 	
 	public Student(String sName, String major, int grade) {
-		this.studentld++;
+		//.studentld++;
 		this.sName = sName;
 		this.major = major;
 		this.grade = grade;

@@ -2,7 +2,7 @@ package p224;
 
 class Sample {
 	public int a;
-	private int b;
+	//private int b;
 	int c;
 	protected int d; 
 		
