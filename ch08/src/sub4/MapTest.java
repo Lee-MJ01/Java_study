@@ -83,6 +83,7 @@ public class MapTest {
 		// 태국 사과
 		list.get(2).get(302).show();
 		
+		
 	}
 
 }
