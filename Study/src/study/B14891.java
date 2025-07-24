@@ -9,152 +9,92 @@ import java.util.Deque;
 import java.util.List;
 import java.util.StringTokenizer;
 
-/*
- 	회전----
- 	시계방향 : 1
- 	반시계방향 : -1
- 	-------
- 	
- 	극-----
- 	n극 : 0
- 	s극 : 1
- 	-------
- */
-
 public class B14891 {
 
-	public static void main(String[] args) throws IOException{
-		
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		
-		List<Deque<Character>> list = new ArrayList<>();
-		
-		// 톱니 입력받기
-		for(int i = 0; i< 4; i++) {
-			list.add(new ArrayDeque<Character>());
-			String str = br.readLine();
-			for(char c : str.toCharArray()){
-				list.get(i).add(c);
-			}
-		}
-		
-		// 회전수
-		int r = Integer.parseInt(br.readLine());
-		int num; // 입력받을 톱니 번호
-		int s;	 // 입력받을 n 또는 s 극
-		for(int i =0; i<r; i++) {
-			StringTokenizer st = new StringTokenizer(br.readLine());
-			num = Integer.parseInt(st.nextToken());
-			s = Integer.parseInt(st.nextToken());
-			cal(num, s, list);
-			
-		}
-		
-	}
-	
-	public static void cal(int num, int s, List<Deque<Character>> list) {
-		boolean tnf;
-		
-		if(s == 1) {
-			tnf = true;
-		}else
-			tnf = false;
-		
-		switch (num) {
-		case 1: {
-			gear1(list, tnf);
-			break;
-		}
-		
-		case 2: {
-			gear2(list, tnf);
-			break;
-		}
-		
-		case 3: {
-			gear3(list, tnf);
-			break;
-		}
-		
-		case 4: {
-			gear4(list, tnf);
-			break;
-		}
-		
-		default:
-			break;
-		}
-		
-	}
-	
-	public static void gear1(List<Deque<Character>> list, boolean tnf) {
-		
-	}
-	public static void gear2(List<Deque<Character>> list, boolean tnf) {
-		Character[] g2 = list.get(2).toArray(new Character[0]);
-		Character[] g1 = list.get(1).toArray(new Character[0]);
-		Character[] g3 = list.get(3).toArray(new Character[0]);
-		
-		if(g2[2] != g1[6]) {
-			if(tnf) {
-				list.get(2).addLast(list.get(2).getFirst());
-				list.get(2).pollFirst();
-			}else {
-				list.get(2).addFirst(list.get(2).getLast());
-				list.get(2).pollLast();
-			}
-			gear2(list, !tnf);
-		}else if(g3[6] != g4[2]) {
-			if(tnf) {
-				list.get(2).addLast(list.get(2).getFirst());
-				list.get(2).pollFirst();
-			}else {
-				list.get(2).addFirst(list.get(2).getLast());
-				list.get(2).pollLast();
-			}
-			gear4(list, !tnf);
-		}
-	}
-	public static void gear3(List<Deque<Character>> list, boolean tnf) {
-		Character[] g3 = list.get(2).toArray(new Character[0]);
-		Character[] g2 = list.get(1).toArray(new Character[0]);
-		Character[] g4 = list.get(3).toArray(new Character[0]);
-		
-		if(g3[2] != g2[6]) {
-			if(tnf) {
-				list.get(2).addLast(list.get(2).getFirst());
-				list.get(2).pollFirst();
-			}else {
-				list.get(2).addFirst(list.get(2).getLast());
-				list.get(2).pollLast();
-			}
-			gear2(list, !tnf);
-		}else if(g3[6] != g4[2]) {
-			if(tnf) {
-				list.get(2).addLast(list.get(2).getFirst());
-				list.get(2).pollFirst();
-			}else {
-				list.get(2).addFirst(list.get(2).getLast());
-				list.get(2).pollLast();
-			}
-			gear4(list, !tnf);
-		}
-		
-	}
-	public static void gear4(List<Deque<Character>> list, boolean tnf) {
-		
-	}
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        // Deque를 담을 List 생성
+        List<Deque<Character>> gears = new ArrayList<>();
+
+        // 4개의 톱니바퀴 정보 입력
+        for (int i = 0; i < 4; i++) {
+            gears.add(new ArrayDeque<>());
+            String s = br.readLine();
+            for (char c : s.toCharArray()) {
+                gears.get(i).add(c);
+            }
+        }
+
+        // 회전 횟수 입력
+        int k = Integer.parseInt(br.readLine());
+
+        // 회전 정보에 따라 K번 반복
+        for (int i = 0; i < k; i++) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            int gearNum = Integer.parseInt(st.nextToken());
+            int direction = Integer.parseInt(st.nextToken());
+
+            // ======================================================
+            // 1. 결정 단계: 어떤 톱니를 돌릴지 명령서(rotations) 만들기
+            // ======================================================
+            int[] rotations = new int[4];
+            rotations[gearNum - 1] = direction;
+
+            // 오른쪽으로 전파
+            for (int j = gearNum - 1; j < 3; j++) {
+                // 현재 톱니의 오른쪽(2)과 다음 톱니의 왼쪽(6) 극이 다르면
+                if (gears.get(j).toArray(new Character[0])[2] != gears.get(j + 1).toArray(new Character[0])[6]) {
+                    // 다음 톱니는 현재 톱니와 반대 방향으로 회전
+                    rotations[j + 1] = -rotations[j];
+                } else {
+                    // 극이 같으면 연쇄 중단
+                    break;
+                }
+            }
+
+            // 왼쪽으로 전파
+            for (int j = gearNum - 1; j > 0; j--) {
+                // 현재 톱니의 왼쪽(6)과 이전 톱니의 오른쪽(2) 극이 다르면
+                if (gears.get(j).toArray(new Character[0])[6] != gears.get(j - 1).toArray(new Character[0])[2]) {
+                    // 이전 톱니는 현재 톱니와 반대 방향으로 회전
+                    rotations[j - 1] = -rotations[j];
+                } else {
+                    // 연쇄 중단
+                    break;
+                }
+            }
+
+            // ======================================================
+            // 2. 실행 단계: 결정된 명령서대로 톱니 회전
+            // ======================================================
+            for (int j = 0; j < 4; j++) {
+                if (rotations[j] == 1) { // 시계 방향
+                    gears.get(j).addFirst(gears.get(j).removeLast());
+                } else if (rotations[j] == -1) { // 반시계 방향
+                    gears.get(j).addLast(gears.get(j).removeFirst());
+                }
+            }
+        }
+
+        // ======================================================
+        // 3. 점수 계산
+        // ======================================================
+        int totalScore = 0;
+        if (gears.get(0).peekFirst() == '1') {
+            totalScore += 1;
+        }
+        if (gears.get(1).peekFirst() == '1') {
+            totalScore += 2;
+        }
+        if (gears.get(2).peekFirst() == '1') {
+            totalScore += 4;
+        }
+        if (gears.get(3).peekFirst() == '1') {
+            totalScore += 8;
+        }
+
+        System.out.println(totalScore);
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
