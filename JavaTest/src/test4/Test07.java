@@ -22,6 +22,9 @@ public class Test07 {
 		Random rand = new Random();
 		for(;;) {
 			int num = (int) Math.ceil(rand.nextDouble() * 45);
+			/* 정답
+			int num = (int) Math.ceil(Math.random() * 46);
+			*/
 			lottoSet.add(num);
 			
 			if(lottoSet.size() >= 6) {

@@ -15,6 +15,12 @@ public class Test04 {
 		String title = fileName.substring(0, idx-5);
 		String ext = fileName.substring(11, idx);
 		
+		/* 정답
+		int idx = fileName.indexOf(".");
+		String title = fileName.substring(0, idx);
+		String ext = fileName.substring(idx);
+		*/
+		
 		System.out.println("파일명 : "+ title);
 		System.out.println("확장자 : "+ ext);
 		
@@ -24,6 +30,9 @@ public class Test04 {
 		int total = 0;
 		for(String score : scores) {
 			total += Integer.parseInt(score);
+			/* 또 다른 정답
+			total += Integer.parseInt(score.trim());
+			*/
 		}
 		System.out.println("strScores 총점 : " + total);
 
